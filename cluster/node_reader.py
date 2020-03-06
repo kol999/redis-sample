@@ -2,12 +2,11 @@ import os
 import redis
 
 
-# REDIS_URL = "redis-cluster-0001-001.e1oqld.0001.euw1.cache.amazonaws.com" 
-REDIS_URL = "redis-cluster-0001-002.e1oqld.0001.euw1.cache.amazonaws.com" 
+REDIS_URL_READER = os.environ.get('REDIS_URL_READER')
 
 # redis_client = redis.Redis(host='localhost', port=6379, db=0) 
 try: 
-    redis_cluster= redis.Redis.from_url(REDIS_URL) 
+    redis_cluster= redis.Redis.from_url(REDIS_URL_READER) 
 except Exception as e:
     print("Error connecting to cluster:" + str(e)) 
 

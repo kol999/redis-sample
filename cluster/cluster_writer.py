@@ -3,11 +3,12 @@ import redis
 from random import randint
 
 
-REDIS_URL = "redis-cluster.e1oqld.clustercfg.euw1.cache.amazonaws.com"
+REDIS_URL_WRITER = os.environ.get('REDIS_URL_WRITER')
+
 
 # redis_client = redis.Redis(host='localhost', port=6379, db=0) 
 try: 
-    redis_cluster= redis.Redis.from_url(REDIS_URL) 
+    redis_cluster= redis.Redis.from_url(REDIS_URL_WRITER)  
 except Exception as e:
     print("Error connecting to cluster:" + str(e)) 
 
